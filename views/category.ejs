@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= categoryName %> Menu</title>
+</head>
+<body>
+
+  <!-- Include the navigation bar -->
+  <%- include('partials/nav') %>
+
+  <h1><%= categoryName %> Menu</h1>
+
+  <!-- Display menu items using forEach -->
+  <% if (menuItems.length > 0) { %>
+    <ul>
+      <% menuItems.forEach(item => { %>
+        <li>
+          <h2><%= item.name %></h2>
+          <p><strong>Price:</strong> $<%= item.price.toFixed(2) %></p>
+          <p><strong>Rating:</strong> ⭐<%= item.rating %>/5</p>
+          <p><strong>Details:</strong> <%= item.details %></p>
+        </li>
+        <hr>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>No items available in this category.</p>
+  <% } %>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+</head>
+<body>
+  <!-- Include the navigation bar from partials -->
+  <%- include('partials/nav') %>
+
+  <h1>Full Menu at <%= restaurant.name %></h1>
+
+  <!-- Mains Section -->
+  <h2>Mains</h2>
+  <ul>
+    <% menu.filter(item => item.category === 'mains').forEach(item => { %>
+      <li>
+        <strong><%= item.name %></strong> - $<%= item.price.toFixed(2) %>
+        <br>
+        <em>Rating:</em> ⭐<%= item.rating %>/5
+        <br>
+        <p><%= item.details %></p>
+      </li>
+    <% }); %>
+  </ul>
+
+  <!-- Desserts Section -->
+  <h2>Desserts</h2>
+  <ul>
+    <% menu.filter(item => item.category === 'desserts').forEach(item => { %>
+      <li>
+        <strong><%= item.name %></strong> - $<%= item.price.toFixed(2) %>
+        <br>
+        <em>Rating:</em> ⭐<%= item.rating %>/5
+        <br>
+        <p><%= item.details %></p>
+      </li>
+    <% }); %>
+  </ul>
+
+  <!-- Sides Section -->
+  <h2>Sides</h2>
+  <ul>
+    <% menu.filter(item => item.category === 'sides').forEach(item => { %>
+      <li>
+        <strong><%= item.name %></strong> - $<%= item.price.toFixed(2) %>
+        <br>
+        <em>Rating:</em> ⭐<%= item.rating %>/5
+        <br>
+        <p><%= item.details %></p>
+      </li>
+    <% }); %>
+  </ul>
+
+</body>
+</html>
