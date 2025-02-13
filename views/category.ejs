@@ -3,31 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= categoryName %> Menu</title>
+  <title><%= category %> Menu</title>
 </head>
 <body>
+  <%- include('./partials/nav') %>
+  <h1><%= category.charAt(0).toUpperCase() + category.slice(1) %> Menu</h1>
 
-  <!-- Include the navigation bar -->
-  <%- include('partials/nav') %>
-
-  <h1><%= categoryName %> Menu</h1>
-
-  <!-- Display menu items using forEach -->
   <% if (menuItems.length > 0) { %>
-    <ul>
-      <% menuItems.forEach(item => { %>
-        <li>
-          <h2><%= item.name %></h2>
-          <p><strong>Price:</strong> $<%= item.price.toFixed(2) %></p>
-          <p><strong>Rating:</strong> ⭐<%= item.rating %>/5</p>
-          <p><strong>Details:</strong> <%= item.details %></p>
-        </li>
-        <hr>
-      <% }); %>
-    </ul>
+    <% menuItems.forEach(item => { %>
+      <div>
+        <h2><%= item.name %> - $<%= item.price %></h2>
+        <p>Rating: <%= item.rating %>/5</p>
+        <p><%= item.details %></p>
+      </div>
+    <% }) %>
   <% } else { %>
-    <p>No items available in this category.</p>
+    <p>No items found for this category.</p>
   <% } %>
-
-</body>
+  </body>
 </html>

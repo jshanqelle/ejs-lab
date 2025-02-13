@@ -6,52 +6,34 @@
   <title>Menu</title>
 </head>
 <body>
-  <!-- Include the navigation bar from partials -->
-  <%- include('partials/nav') %>
+  <%- include('./partials/nav') %>
+  <h1>Full Menu</h1>
 
-  <h1>Full Menu at <%= restaurant.name %></h1>
-
-  <!-- Mains Section -->
   <h2>Mains</h2>
-  <ul>
-    <% menu.filter(item => item.category === 'mains').forEach(item => { %>
-      <li>
-        <strong><%= item.name %></strong> - $<%= item.price.toFixed(2) %>
-        <br>
-        <em>Rating:</em> ⭐<%= item.rating %>/5
-        <br>
-        <p><%= item.details %></p>
-      </li>
-    <% }); %>
-  </ul>
+  <% menu.filter(item => item.category === 'mains').forEach(item => { %>
+    <div>
+      <h3><%= item.name %> - $<%= item.price %></h3>
+      <p>Rating: <%= item.rating %>/5</p>
+      <p><%= item.details %></p>
+    </div>
+  <% }) %>
 
-  <!-- Desserts Section -->
   <h2>Desserts</h2>
-  <ul>
-    <% menu.filter(item => item.category === 'desserts').forEach(item => { %>
-      <li>
-        <strong><%= item.name %></strong> - $<%= item.price.toFixed(2) %>
-        <br>
-        <em>Rating:</em> ⭐<%= item.rating %>/5
-        <br>
-        <p><%= item.details %></p>
-      </li>
-    <% }); %>
-  </ul>
+  <% menu.filter(item => item.category === 'desserts').forEach(item => { %>
+    <div>
+      <h3><%= item.name %> - $<%= item.price %></h3>
+      <p>Rating: <%= item.rating %>/5</p>
+      <p><%= item.details %></p>
+    </div>
+  <% }) %>
 
-  <!-- Sides Section -->
   <h2>Sides</h2>
-  <ul>
-    <% menu.filter(item => item.category === 'sides').forEach(item => { %>
-      <li>
-        <strong><%= item.name %></strong> - $<%= item.price.toFixed(2) %>
-        <br>
-        <em>Rating:</em> ⭐<%= item.rating %>/5
-        <br>
-        <p><%= item.details %></p>
-      </li>
-    <% }); %>
-  </ul>
-
+  <% menu.filter(item => item.category === 'sides').forEach(item => { %>
+    <div>
+      <h3><%= item.name %> - $<%= item.price %></h3>
+      <p>Rating: <%= item.rating %>/5</p>
+      <p><%= item.details %></p>
+    </div>
+  <% }) %>
 </body>
 </html>

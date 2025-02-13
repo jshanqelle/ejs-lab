@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-
+const path = require('path');
 
 // exercise 1
 app.set('view engine', 'ejs');
-
+app.set('views', path.join(__dirname, 'views'));
 const RESTAURANT = {
     name: 'The Green Byte Bistro',
     isOpen: true,
@@ -57,24 +57,18 @@ const RESTAURANT = {
 app.get('/', (req, res) => {
     res.render('home', { restaurant: RESTAURANT }); 
 });
+
 //route for menu
 app.get('/menu', (req,res) => {
-    res.render('menu', {resturant:RESTAURANT});
+    res.render('menu', {menu:RESTAURANT.menu});
 });
+
 // route for menu categories
 app.get('/menu/:category', (req, res) => {
-    const { category } = req.params;
-    const categoryName = category.charAt(0).toUpperCase() + category.slice(1); 
-// filter the menu based on the category
-const menuItems = RESTAURANT.menu.filter(item => item.category.toLowerCase() === category.toLowerCase());
-// pass filtered menu items to category name into view
-res,render('category', {menuItems, categoryName});
+  const category = req.params.category.toLowerCase();
+  const filteredMenu = RESTAURANT.menu.filter(item => item.category === category);
+  res.render('category', { menuItems: filteredMenu, category });
 });
-
-
-
-
-
 
 app.listen(3000, () =>{
     console.log('Server listening on pprt 3000');

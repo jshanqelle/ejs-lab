@@ -6,17 +6,15 @@
   <title>Home</title>
 </head>
 <body>
-    <h1>Welcome to <%= restaurant.name %>!</h1>
-    <p><strong>Address:</strong> <%= restaurant.address %></p>
-    <p><strong>Phone:</strong> <%= restaurant.phone %></p>
-
-    <% if (restaurant.isOpen) { %>
-        <p>Yes, we are open!</p>
-    <% } else { %>
-        <p>Sorry, we are closed.</p>
-    <% } %>
     <%- include('./partials/nav') %>
-   
-
+    <h1>Welcome to <%= restaurant.name %></h1>
+    <p>Address: <%= restaurant.address %></p>
+    <p>Phone: <%= restaurant.phone %></p>
+    
+    <% if (restaurant.isOpen) { %>
+      <p>Yes, we are open!</p>
+    <% } else { %>
+      <p>Sorry, we are closed.</p>
+    <% } %>
 </body>
 </html>
